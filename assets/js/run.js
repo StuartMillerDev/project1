@@ -23,6 +23,7 @@ $("#search").click(function(){
   var beverage=$("#beverage").val();
   var email=$("#email").val().trim();
   var url;
+  var articles[];
   function buildUrl(){
     //create a local variable that holds the URL and adds on the params to the end
     url="https://api.nytimes.com/svc/search/v2/articlesearch.json";
@@ -38,7 +39,29 @@ $("#search").click(function(){
   }
 
   // create AJAX 'GET' call to collect articles
+function newsQuery(){
+  $.ajax({
+  url: url,
+  method: 'GET',
+}).done(function(result) {
+  console.log(result);
 
+  //create an array of the first five NYTIMES articles with this term
+  for(var i=0; i<5; i++){
+    //loop through the first five articles and add to the array
+    articles.push(result.docs.url);
+  }
+  //create text of the email body
+
+  var str;
+
+  //
+
+  }
+}).fail(function(err) {
+  throw err;
+});
+}
   // Create a 'message' variable that is the text content of the email
 
   // create seperate AJAX 'POST' to send email
