@@ -29,7 +29,7 @@ $("#search").click(function(){
     url="https://api.nytimes.com/svc/search/v2/articlesearch.json";
     url += '?' + $.param({
 
-      'api-key': "b9f91d369ff59547cd47b931d8cbc56b:0:74623931",
+      'api-key': "QT2IYsO2LMMcCRoL4SGG0XibUZHr8cps",
 
     beverage , //input from the form ID,
       20180101, //YYYYMMDD //date input ID
