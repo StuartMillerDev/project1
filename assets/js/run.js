@@ -67,3 +67,48 @@ function newsQuery(){
   // create seperate AJAX 'POST' to send email
 
 });
+
+function buildQuery(amount, size, food) {
+  return amount + "%20" + size + "%20" + food;
+} 
+
+function getBeverageInfo() {
+  $.ajax({
+    method: "GET",
+    url: "https://trackapi.nutritionix.com/v2/search/instant?query=1%20red%20bull&detailed=true&claims=true",
+    headers: {
+      'content-type': 'application/json',
+      'x-app-id' : 'd0025a85',
+      'x-app-key' : '423e3a386b4a6b7c4ad3eebfea0fa4b9',
+      'x-remote-user-id' : '0'
+    }
+  }).done(function(response) {
+    console.log(response);
+  }).fail(function(err){
+    //Log Error
+    console.log("Error: " + err);
+  });
+}
+
+function getNutritionInfo() {
+  $.ajax({
+    method: "POST",
+    url: "https://trackapi.nutritionix.com/v2/natural/nutrients",
+    crossDomain : true,
+    data : '{"query":"20 fl oz bottles of sprite", "num_servings": 1, "locale":"en_US"}',
+    headers : {
+      'content-type': 'application/json',
+      'x-app-id' : 'd0025a85',
+      'x-app-key' : '423e3a386b4a6b7c4ad3eebfea0fa4b9',
+      'x-remote-user-id' : '0'
+    }
+  }).done(function(response) {
+    console.log(response);
+  }).fail(function(err){
+    //Log Error
+    console.log("Error: " + err);
+  });
+}
+getBeverageInfo();
+getNutritionInfo();
+  
