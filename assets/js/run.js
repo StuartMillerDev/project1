@@ -1,4 +1,4 @@
-// vars
+
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyDDFI02BH-xPlcQLthj4B62xmwN_VKBQok",
@@ -9,70 +9,27 @@ var config = {
   messagingSenderId: "616696108809"
 };
 firebase.initializeApp(config);
-
-//objects
-
-//functions
-
-//ajax
-
-$("#search").click(function(){
-  //collect from input fields
-  var firstName=$("#firstName").val().trim();
-  var lastName=$("#lastName").val().trim();
-  var beverage=$("#beverage").val();
-  var email=$("#email").val().trim();
-  var url;
-  var articles[];
-  function buildUrl(){
-    //create a local variable that holds the URL and adds on the params to the end
-    url="https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json?";
-    url += '?' + $.param({
-
-      'api-key': "QT2IYsO2LMMcCRoL4SGG0XibUZHr8cps",
-
-    beverage , //input from the form ID,
-      20180101, //YYYYMMDD //date input ID
-      20190101
-    });
-
-  }
+//reference to the database
+database= firebase.database();
 
 
-console.log(buildUrl();
-  // create AJAX 'GET' call to collect articles
-function newsQuery(){
+function getNews(term){
+  //using cors-anywhere to get around cors errors
+var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=QT2IYsO2LMMcCRoL4SGG0XibUZHr8cps&q=beverage+"+term+"&limit=5";
   $.ajax({
-  url: url,
-  method: 'GET',
-}).done(function(result) {
-  console.log(result);
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
 
-  //create an array of the first five NYTIMES articles with this term
-  for(var i=0; i<5; i++){
-    //loop through the first five articles and add to the array
-    articles.push(result.docs.url);
-  }
-  //create text of the email body
-
-  var str;
-
-  //
-
-  }
-}).fail(function(err) {
-  throw err;
-});
+    //update the webpage
+  });
 }
-  // Create a 'message' variable that is the text content of the email
 
-  // create seperate AJAX 'POST' to send email
-
-});
 
 function buildQuery(amount, size, food) {
   return amount + "%20" + size + "%20" + food;
-} 
+}
 
 function getBeverageInfo() {
   $.ajax({
@@ -113,4 +70,3 @@ function getNutritionInfo() {
 }
 getBeverageInfo();
 getNutritionInfo();
-  
