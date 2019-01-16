@@ -26,7 +26,7 @@ $("#search").click(function(){
   var articles[];
   function buildUrl(){
     //create a local variable that holds the URL and adds on the params to the end
-    url="https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    url="https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json?";
     url += '?' + $.param({
 
       'api-key': "QT2IYsO2LMMcCRoL4SGG0XibUZHr8cps",
@@ -38,6 +38,8 @@ $("#search").click(function(){
 
   }
 
+
+console.log(buildUrl();
   // create AJAX 'GET' call to collect articles
 function newsQuery(){
   $.ajax({
