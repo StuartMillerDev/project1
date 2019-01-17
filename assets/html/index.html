@@ -1,16 +1,108 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-<!-- Links here -->
+<!doctype html>
 
-  </head>
-  <body>
-<!-- MAIN CONTENT -->
-<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>DevHealth</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  
+  
+</head>
 
 
-<!-- JAVASCRIPT REF HERE -->
+<body>
+  <nav>
+    <div class="nav-wrapper light-green darken-3 purple-text">
+      <a href="#" class="brand-logo center amber-text">DevHealth</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="">Welcome</a></li>
+        <li><a href="">Soda Intake</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="" id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s8">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+        
+      </div>
+            
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Beverage</a>
+
+    <!-- Dropdown Structure -->
+    
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#!" id="coke">Coke</a></li>
+        <li><a href="#!" id="mountain-dew">Mountain Dew</a></li>
+        <li><a href="#!" id="monster">Monster</a></li>
+        <li><a href="#!" id="redbull">Redbull</a></li>        
+    </ul>
+        </div>
+          <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn' href='#' data-activates='dropdown2'>Quantity Consumed</a>
+
+    <!-- Dropdown Structure -->
+    
+    <ul id='dropdown2' class='dropdown-content'>
+        <li><a href="#!" id="uno">One</a></li>
+        <li><a href="#!" id="dos">Two</a></li>
+        <li><a href="#!" id="tres">Three</a></li>
+        <li><a href="#!" id="quatro">Four</a></li>        
+    </ul>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+            
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <a class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">GO!</i></a>
+
+
+<footer class="page-footer light-green darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li>was thinking we could put our names down here</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2014 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
   </body>
 </html>
