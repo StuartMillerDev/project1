@@ -8,9 +8,9 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  
+  <script src="/project1/assets/js/run.js"></script>
   
 </head>
 
@@ -26,51 +26,36 @@
     </div>
   </nav>
 
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+  <div> 
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s2">
+            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s2">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
         </div>
-        <div class="input-field col s8">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+        <div class="input-field col s3">
+          <select id="beverage_menu">
+            <option value="coca cola">Coke</option>
+            <option value="mountain dew">Mountain Dew</option>
+            <option value="sprite">Sprite</option>
+            <option value="monster">Monster</option>
+            <option value="red bull">Red Bull</option>
+          </select>
+          <label>Daily Drinks</label>
         </div>
-        
-      </div>
-            
-    <!-- Dropdown Trigger -->
-    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Beverage</a>
-
-    <!-- Dropdown Structure -->
-    
-    <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="#!" id="coke">Coke</a></li>
-        <li><a href="#!" id="mountain-dew">Mountain Dew</a></li>
-        <li><a href="#!" id="monster">Monster</a></li>
-        <li><a href="#!" id="redbull">Redbull</a></li>        
-    </ul>
-        </div>
-          <!-- Dropdown Trigger -->
-    <a class='dropdown-button btn' href='#' data-activates='dropdown2'>Quantity Consumed</a>
-
-    <!-- Dropdown Structure -->
-    
-    <ul id='dropdown2' class='dropdown-content'>
-        <li><a href="#!" id="uno">One</a></li>
-        <li><a href="#!" id="dos">Two</a></li>
-        <li><a href="#!" id="tres">Three</a></li>
-        <li><a href="#!" id="quatro">Four</a></li>        
-    </ul>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s3">
           <input id="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
       </div>
-            
         </div>
       </div>
     </form>
