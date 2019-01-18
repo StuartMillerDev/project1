@@ -78,6 +78,7 @@ for(var i=0; i<5; i++){
   });
 }
 
+<<<<<<< HEAD
 //BUILDS QUERY FOR NUTRITION/BEVERAGE QUERY
 function buildQuery(amount, size, food) {
   return amount + "%20" + size + "%20" + food;
@@ -100,13 +101,20 @@ function getBeverageInfo() {
     console.log("Error: " + err);
   });
 }
+=======
+
+var nutritionInfo;
+>>>>>>> df72872eeed84cec508c29f9ef77a4e2d8dcd048
 
 function getNutritionInfo() {
+  var queryString = beverage;
+  var amount = 1;
+
   $.ajax({
     method: "POST",
     url: "https://trackapi.nutritionix.com/v2/natural/nutrients",
     crossDomain : true,
-    data : '{"query":"20 fl oz bottles of sprite", "num_servings": 1, "locale":"en_US"}',
+    data : `{"query":"${queryString}", "num_servings":"${amount}", "locale":"en_US"}`,
     headers : {
       'content-type': 'application/json',
       'x-app-id' : 'd0025a85',
@@ -115,10 +123,28 @@ function getNutritionInfo() {
     }
   }).done(function(response) {
     console.log(response);
+    nutritionInfo = response.foods;
   }).fail(function(err){
     //Log Error
     console.log("Error: " + err);
   });
 }
-getBeverageInfo();
-getNutritionInfo();
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, {});
+});
+
+var firstName = $('#first_name').val();
+var lastName = $('#last_name').val();
+var email = $('#email').val();
+var beverage = $('#beverage_menu option:selected').val();
+
+$(document).on('change', function() {
+  firstName = $('#first_name').val();
+  lastName = $('#last_name').val();
+  email = $('#email').val();
+  beverage = $('#beverage_menu option:selected').text();
+
+  getNutritionInfo(); 
+});
