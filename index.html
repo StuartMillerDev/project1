@@ -18,7 +18,7 @@
 
 </head>
 <body>
-  
+
   <nav>
     <div class="nav-wrapper blue darken-3 purple-text">
       <a href="#" class="brand-logo center white-text">DevHealth Logo</a>
@@ -48,26 +48,21 @@
   <div>
     <div class="row">
       <form class="col s12">
-        <div class="row">
-          <div class="input-field col s2">
-            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
-          </div>
-          <div class="input-field col s2">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
-          </div>
-        </div>
-        <div class="input-field col s3">
-          <select id="beverage_menu">
-            <option value="coca cola">Coke</option>
-            <option value="mountain dew">Mountain Dew</option>
-            <option value="sprite">Sprite</option>
-            <option value="monster">Monster</option>
-            <option value="red bull">Red Bull</option>
-          </select>
+
+
+          <div class="input-field col s3">
+            <select id="beverage_menu">
+              <option value="coca cola">Coke</option>
+              <option value="mountain dew">Mountain Dew</option>
+              <option value="sprite">Sprite</option>
+              <option value="monster">Monster</option>
+              <option value="red bull">Red Bull</option>
+            </select>
           <label>Daily Drinks</label>
         </div>
+
+
+
       </div>
       <div class="row">
         <div class="input-field col s3">
@@ -83,14 +78,39 @@
   </div>
   <div>
     <!-- Dropdown Trigger -->
-    <a class='dropdown-button btn blue' href='#' data-activates='dropdown1'>Beverage</a>
+
     <!-- Dropdown Structure -->
-    <ul id='dropdown1' class='dropdown-content'>
-      <li class="coke" value="coke"><a href="#!" id="coke">Coke</a></li>
-      <li class="redBull" value="redBull"><a href="#!" id="coke">Red Bull</a></li>
-      <li class="monster" value="monster"><a href="#!" id="coke">Monster</a></li>
-      <li class="mountainDew" value="mountainDew"><a href="#!" id="coke">Mountain Dew</a></li>
-    </ul>
+    <div class="container text-center">
+      <div class="">
+
+  <form action="#" id="beverage_menu">
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Coke" checked />
+        <span>Coke</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Mountain Dew" checked />
+        <span>Mountain Dew</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Red-Bull" checked />
+        <span>Red-Bull</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Monster" checked />
+        <span>Monster</span>
+      </label>
+    </p>
+  </form>
+      </div>
+    </div>
   </div>
   <br>
   <div>

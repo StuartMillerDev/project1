@@ -12,7 +12,7 @@ var config = {
 firebase.initializeApp(config);
 //reference to the database
 database= firebase.database();
-console.log(database);
+console.log("database: ",database);
 var articles=[];
 var response1;
 //ADDING ITEM TO DATABASE ON CLICK
@@ -30,8 +30,9 @@ $("#go").click(function(){
     }
     // console.log("CURRENT ITEM IN DATABASE: ", database.ref().val())
     if(fN!=null && fN!="" && lN!=null && lN!=""){
-      getNews($("#beverage_menu option:selected").text());
-      database.ref().push(data);
+      // getNews(); need to run this method with a term
+      console.log($("#beverage_menu option:selected").text());
+      database.ref().set(data);
       // console.log("Pushing data to the database: ", database.ref().val())
     }
     else{
@@ -41,10 +42,6 @@ $("#go").click(function(){
 });
 
 
-$("#beverage_menu").click(function(){
-  getNews($("#beverage_menu option:selected").text());
-  console.log(getNews("Sprite"));
-});
 
 //ITEM ADDED TO DATABASE
 database.ref().on("child_added", function(childSnapshot) {
@@ -84,6 +81,7 @@ var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+    console.log(response);
 response1=response;
 var newsObject=response;
 for(var i=0; i<5; i++){
@@ -159,8 +157,16 @@ $(document).on('change', function() {
   getNutritionInfo();
 });
 
+$("input").click(function(){
+  var selection=$("input:checked").val();
+  console.log("DRINK: ",selection);
+});
 
 
+//
+// $("#dropdown1").click(function(){
+//   getNews(this.value);
+// });
 
 
 // <div class="slider">
