@@ -1,108 +1,165 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>DevHealth</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/Users/lukefuller/project1/assets/css/style.css">
 </head>
-
-
 <body>
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="assets/images/coke2.jpg"> <!-- random image -->
+        <!--Add text to slider images???-->
+        <div class="caption right-align">
+          <h3 class="black-text"></h3>
+          <h5 class="light black-text text-lighten-3"></h5>
+        </div>
+      </li>
+      <li>
+        <img src="assets/images/monster.jpg"> <!-- random image -->
+        <div class="caption left-align">
+          <h3></h3>
+          <h5 class="light grey-text text-lighten-3"></h5>
+        </div>
+      </li>
+      <li>
+        <img src="assets/images/mountainDew2.jpg"> <!-- random image -->
+        <div class="caption right-align">
+          <h3></h3>
+          <h5 class="light grey-text text-lighten-3"></h5>
+        </div>
+      </li>
+      <li>
+        <img src="assets/images/redbull.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3></h3>
+          <h5 class="light grey-text text-lighten-3"></h5>
+        </div>
+      </li>
+    </ul>
+  </div>
   <nav>
-    <div class="nav-wrapper light-green darken-3 purple-text">
-      <a href="#" class="brand-logo center amber-text">DevHealth</a>
+    <div class="nav-wrapper blue darken-3 purple-text">
+      <a href="#" class="brand-logo center white-text">DevHealth Logo</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="">Welcome</a></li>
-        <li><a href="">Soda Intake</a></li>
+        <li><a href=""></a></li>
       </ul>
     </div>
   </nav>
-
   <div class="row">
-    <form class="col s12">
+    <form class=" white col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="" id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate">
           <label for="first_name">First Name</label>
         </div>
-        <div class="input-field col s8">
+        <div class="input-field col s6">
           <input id="last_name" type="text" class="validate">
           <label for="last_name">Last Name</label>
         </div>
-        
-      </div>
-            
-    <!-- Dropdown Trigger -->
-    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Beverage</a>
-
-    <!-- Dropdown Structure -->
-    
-    <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="#!" id="coke">Coke</a></li>
-        <li><a href="#!" id="mountain-dew">Mountain Dew</a></li>
-        <li><a href="#!" id="monster">Monster</a></li>
-        <li><a href="#!" id="redbull">Redbull</a></li>        
-    </ul>
-        </div>
-          <!-- Dropdown Trigger -->
-    <a class='dropdown-button btn' href='#' data-activates='dropdown2'>Quantity Consumed</a>
-
-    <!-- Dropdown Structure -->
-    
-    <ul id='dropdown2' class='dropdown-content'>
-        <li><a href="#!" id="uno">One</a></li>
-        <li><a href="#!" id="dos">Two</a></li>
-        <li><a href="#!" id="tres">Three</a></li>
-        <li><a href="#!" id="quatro">Four</a></li>        
-    </ul>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input id="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
       </div>
-            
-        </div>
-      </div>
-    </form>
   </div>
-  
-  <a class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">GO!</i></a>
+  </div>
+  </form>
+  </div>
+  <div>
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn blue' href='#' data-activates='dropdown1'>Beverage</a>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+      <li class="coke" value="coke"><a href="#!" id="coke">Coke</a></li>
+      <li class="redBull" value="redBull"><a href="#!" id="coke">Red Bull</a></li>
+      <li class="monster" value="monster"><a href="#!" id="coke">Monster</a></li>
+      <li class="mountainDew" value="mountainDew"><a href="#!" id="coke">Mountain Dew</a></li>
+    </ul>
+  </div>
+  <br>
+  <div>
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn blue' href='#' data-activates='dropdown2'>Consumed</a>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown2' class='dropdown-content'>
+      <li class="one" value="one"><a href="#!" id="uno">One</a></li>
+      <li class="two" value="two"><a href="#!" id="dos">Two</a></li>
+      <li class="three" value="three"><a href="#!" id="tres">Three</a></li>
+      <li class="four" value="four"><a href="#!" id="quatro">Four</a></li>
+    </ul>
+  </div>
+  <br>
+  <div>
+    <a id="go" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">GO!</i></a>
+  </div>
+  <br>
+  <div id="resultsHere">
 
-
-<footer class="page-footer light-green darken-3">
+  </div>
+  <canvas id="myChart" width="1500" height="400"></canvas>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart to create
+      type: 'bar',
+      // The data for our dataset
+      data: {
+        labels: ["Coke", "Red Bull", "Monster", "Mountain Dew","Daily Recomended"],
+        datasets: [{
+          label: "Quantity of Beverage Consumed",
+          backgroundColor: 'rgb(255, 99, 132',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [65, 49, 54, 77, 30]
+        }]
+      },
+      // Configuration options go here
+      options: {
+        responsive: true,
+        scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+      }
+    });
+    $(document).ready(function () {
+         $('.slider').slider({indicators:false});
+     });
+  </script>
+  <footer class="page-footer light-blue darken-1">
     <div class="container">
       <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Footer Content</h5>
-          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li>was thinking we could put our names down here</li>
-          </ul>
+        <div class="col s12 ">
+          <h5 class="white-text">Group 6 Project 1:</h5>
+          <p class="grey-text text-lighten-4">John Mappin | Luke Fuller | Stuart Miller | Pranay Prathipati</p>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      © 2014 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2019 Copyright
+        <a class="grey-text text-lighten-4 right" href="#!">Insert Github Link</a>
       </div>
     </div>
   </footer>
-  </body>
+  <script src=../js/run.js></script>
+
+
+</body>
+
 </html>

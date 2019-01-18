@@ -11,8 +11,58 @@ var config = {
 firebase.initializeApp(config);
 //reference to the database
 database= firebase.database();
+console.log(database);
+var articles=[];
+var response1;
+//ADDING ITEM TO DATABASE ON CLICK
+$("#go").click(function(){
+  event.preventDefault();
+  var fN=$("#first_name").val().trim();
+  var lN=$("#last_name").val().trim();
+  var data = {
+      firstName:fN,
+      lastName:lN,
+      articles: articles,
+      nutritionInfo:nutritiionInfo,
+      beverageInfo:$("#beverage_menu option:selected").text()
+    }
+    // console.log("CURRENT ITEM IN DATABASE: ", database.ref().val())
+    if(fN!=null && fN!="" && lN!=null && lN!=""){
+      getNews(term);
+      database.ref().push(data);
+      // console.log("Pushing data to the database: ", database.ref().val())
+    }
+    else{
+      // error message
+      console.log("Input fields are null or empty")
+    }
+});
 
+//ITEM ADDED TO DATABASE
+database.ref().on("child_added", function(childSnapshot) {
+//refill the page with articles
+var articlesArray = childSnapshot.val().articles;
+var nutritionStuff=childSnapshot.val().nutritionInfo;
+var firstName=childSnapshot.val().firstName;
+var lastName=childSnapshot.val().lastName;
+var div=$("<div class='container'>");
+articlesArray.forEach(function(index){
+  var article=articlesArray[index];
+  var card=$("<div class='card center-align'>");
+  var cardAction=$("<div class='card-action'>");
+  var link=$("<a href='" + article.web_url + "'> LINK TO ARTICLE</a>");
+  var content=$("<p class='text-center'>");
+  content.append(article.headline.print_headline);
+  cardAction.append(link);
+  card.append(content,cardAction);
+});
 
+div.append(card);
+div.append("<br>");
+$("#resultsHere").append(div);
+});
+
+// COLLECTING NYTIMES DATA
 function getNews(term){
   //using cors-anywhere to get around cors errors
 var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=QT2IYsO2LMMcCRoL4SGG0XibUZHr8cps&q=beverage+"+term+"&limit=5";
@@ -20,13 +70,15 @@ var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    console.log(response);
-
-    //update the webpage
+response1=response;
+var newsObject=response;
+for(var i=0; i<5; i++){
+      articles.push(article);
+    }
   });
 }
 
-
+//BUILDS QUERY FOR NUTRITION/BEVERAGE QUERY
 function buildQuery(amount, size, food) {
   return amount + "%20" + size + "%20" + food;
 }
