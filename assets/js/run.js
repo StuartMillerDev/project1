@@ -1,5 +1,6 @@
 
 // Initialize Firebase
+console.log('test');
 var config = {
   apiKey: "AIzaSyAUCTGTZIqljA6nJSs00N27qOKOsb_NqI4",
   authDomain: "devhealth-327da.firebaseapp.com",
@@ -11,7 +12,6 @@ var config = {
 firebase.initializeApp(config);
 //reference to the database
 database= firebase.database();
-database.push("TEST");
 console.log(database);
 var articles=[];
 var response1;
@@ -25,12 +25,12 @@ $("#go").click(function(){
       firstName:fN,
       lastName:lN,
       articles: articles,
-      nutritionInfo:nutritiionInfo,
+      nutritionInfo:nutritionInfo,
       beverageInfo:$("#beverage_menu option:selected").text()
     }
     // console.log("CURRENT ITEM IN DATABASE: ", database.ref().val())
     if(fN!=null && fN!="" && lN!=null && lN!=""){
-      getNews(term);
+      getNews($("#beverage_menu option:selected").text());
       database.ref().push(data);
       // console.log("Pushing data to the database: ", database.ref().val())
     }
@@ -38,6 +38,12 @@ $("#go").click(function(){
       // error message
       console.log("Input fields are null or empty")
     }
+});
+
+
+$("#beverage_menu").click(function(){
+  getNews($("#beverage_menu option:selected").text());
+  console.log(getNews("Sprite"));
 });
 
 //ITEM ADDED TO DATABASE
@@ -48,16 +54,22 @@ var nutritionStuff=childSnapshot.val().nutritionInfo;
 var firstName=childSnapshot.val().firstName;
 var lastName=childSnapshot.val().lastName;
 var div=$("<div class='container'>");
-articlesArray.forEach(function(index){
-  var article=articlesArray[index];
-  var card=$("<div class='card center-align'>");
-  var cardAction=$("<div class='card-action'>");
-  var link=$("<a href='" + article.web_url + "'> LINK TO ARTICLE</a>");
-  var content=$("<p class='text-center'>");
-  content.append(article.headline.print_headline);
-  cardAction.append(link);
-  card.append(content,cardAction);
-});
+if(!articlesArray){
+  for(var i=0; i<5; i++){
+    console.log(articlesArray);
+    var article=articlesArray[i];
+    var card=$("<div class='card center-align'>");
+    var cardAction=$("<div class='card-action'>");
+    var link=$("<a href='" + article.web_url + "'> LINK TO ARTICLE</a>");
+    var content=$("<p class='text-center'>");
+    content.append(article.headline.print_headline);
+    cardAction.append(link);
+    card.append(content,cardAction);
+  }
+
+
+}
+
 
 div.append(card);
 div.append("<br>");
@@ -125,17 +137,13 @@ function getNutritionInfo() {
     }
   }).done(function(response) {
     console.log(response);
-    nutritionInfo = response.foods;
+    nutritionInfo = response;
   }).fail(function(err){
     //Log Error
     console.log("Error: " + err);
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, {});
-});
 
 var firstName = $('#first_name').val();
 var lastName = $('#last_name').val();
@@ -150,3 +158,41 @@ $(document).on('change', function() {
 
   getNutritionInfo();
 });
+
+
+
+
+
+// <div class="slider">
+//   <ul class="slides">
+//     <li>
+//       <img src="assets/images/coke2.jpg"> <!-- random image -->
+//       <!--Add text to slider images???-->
+//       <div class="caption right-align">
+//         <h3 class="black-text"></h3>
+//         <h5 class="light black-text text-lighten-3"></h5>
+//       </div>
+//     </li>
+//     <li>
+//       <img src="assets/images/monster.jpg"> <!-- random image -->
+//       <div class="caption left-align">
+//         <h3></h3>
+//         <h5 class="light grey-text text-lighten-3"></h5>
+//       </div>
+//     </li>
+//     <li>
+//       <img src="assets/images/mountainDew2.jpg"> <!-- random image -->
+//       <div class="caption right-align">
+//         <h3></h3>
+//         <h5 class="light grey-text text-lighten-3"></h5>
+//       </div>
+//     </li>
+//     <li>
+//       <img src="assets/images/redbull.jpg"> <!-- random image -->
+//       <div class="caption center-align">
+//         <h3></h3>
+//         <h5 class="light grey-text text-lighten-3"></h5>
+//       </div>
+//     </li>
+//   </ul>
+// </div>
