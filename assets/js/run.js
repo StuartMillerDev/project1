@@ -11,11 +11,13 @@ var config = {
 firebase.initializeApp(config);
 //reference to the database
 database= firebase.database();
+database.push("TEST");
 console.log(database);
 var articles=[];
 var response1;
 //ADDING ITEM TO DATABASE ON CLICK
 $("#go").click(function(){
+  console.log("CLICKED GO");
   event.preventDefault();
   var fN=$("#first_name").val().trim();
   var lN=$("#last_name").val().trim();
@@ -78,7 +80,7 @@ for(var i=0; i<5; i++){
   });
 }
 
-<<<<<<< HEAD
+
 //BUILDS QUERY FOR NUTRITION/BEVERAGE QUERY
 function buildQuery(amount, size, food) {
   return amount + "%20" + size + "%20" + food;
@@ -101,10 +103,10 @@ function getBeverageInfo() {
     console.log("Error: " + err);
   });
 }
-=======
+
 
 var nutritionInfo;
->>>>>>> df72872eeed84cec508c29f9ef77a4e2d8dcd048
+
 
 function getNutritionInfo() {
   var queryString = beverage;
@@ -146,5 +148,5 @@ $(document).on('change', function() {
   email = $('#email').val();
   beverage = $('#beverage_menu option:selected').text();
 
-  getNutritionInfo(); 
+  getNutritionInfo();
 });
