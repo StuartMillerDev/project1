@@ -82,6 +82,7 @@ $.ajax({
     method: "GET"
   }).then(function(response){
     console.log(response);
+    $("#resultsHere").empty();
     var newsObject=response;
     var div=$("<div class='container'>");
       // populate parent div with each article
