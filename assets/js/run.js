@@ -44,34 +44,63 @@ $("#go").click(function(){
 
 
 //ITEM ADDED TO DATABASE
-database.ref().on("child_added", function(childSnapshot) {
-//refill the page with articles
-var articlesArray = childSnapshot.val().articles;
-var nutritionStuff=childSnapshot.val().nutritionInfo;
-var firstName=childSnapshot.val().firstName;
-var lastName=childSnapshot.val().lastName;
-var div=$("<div class='container'>");
-if(!articlesArray){
-  for(var i=0; i<5; i++){
-    console.log(articlesArray);
-    var article=articlesArray[i];
-    var card=$("<div class='card center-align'>");
-    var cardAction=$("<div class='card-action'>");
-    var link=$("<a href='" + article.web_url + "'> LINK TO ARTICLE</a>");
-    var content=$("<p class='text-center'>");
-    content.append(article.headline.print_headline);
-    cardAction.append(link);
-    card.append(content,cardAction);
-  }
+// database.ref().on("child_added", function(childSnapshot) {
+// //refill the page with articles
+// var articlesArray = childSnapshot.val().articles;
+// var nutritionStuff=childSnapshot.val().nutritionInfo;
+// var firstName=childSnapshot.val().firstName;
+// var lastName=childSnapshot.val().lastName;
+// var div=$("<div class='container'>");
+// if(!articlesArray){
+//   for(var i=0; i<5; i++){
+//     console.log(articlesArray);
+//     var article=articlesArray[i];
+//     var card=$("<div class='card center-align'>");
+//     var cardAction=$("<div class='card-action'>");
+//     var link=$("<a href='" + article.web_url + "'> LINK TO ARTICLE</a>");
+//     var content=$("<p class='text-center'>");
+//     content.append(article.headline.print_headline);
+//     cardAction.append(link);
+//     card.append(content,cardAction);
+//   }
+//
+//
+// }
+//
+//
+// div.append(card);
+// div.append("<br>");
+// $("#resultsHere").append(div);
+// });
 
+var queryURL = "https://cors-anywhere.herokuapp.com/https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=QT2IYsO2LMMcCRoL4SGG0XibUZHr8cps&q=beverage+sprite";
 
-}
+var div=$("<div>");
 
+$.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response){
+    console.log(response);
+    var newsObject=response;
+    var div=$("<div class='container'>");
+      // populate parent div with each article
+      for(var i=0; i<5; i++){
+        var article = newsObject.response.docs[i];
+        var card=$("<div class='card center-align'>");
+        var cardAction=$("<div class='card-action'>");
+        var link=$("<a href='" + article.web_url + "'> LINK TO ARTICLE</a>");
+        var content=$("<p class='text-center'>");
+        content.append(article.headline.print_headline);
+        cardAction.append(link);
 
-div.append(card);
-div.append("<br>");
-$("#resultsHere").append(div);
-});
+        card.append(content,cardAction);
+        div.append(card);
+        div.append("<br>")
+
+      }
+      $("#resultsHere").append(div);
+  });
 
 // COLLECTING NYTIMES DATA
 function getNews(term){
