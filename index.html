@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DevHealth</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <!-- Firebase Reference -->
+<script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+
+
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper blue darken-3 purple-text">
+      <a href="#" class="brand-logo center white-text">DevHealth Logo</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="">Welcome</a></li>
+        <li><a href=""></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+    <form class=" white col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+
+
+  <div>
+    <div class="row">
+      <form class="col s12">
+
+
+          <div class="input-field col s3">
+            <select id="beverage_menu">
+              <option value="coca cola">Coke</option>
+              <option value="mountain dew">Mountain Dew</option>
+              <option value="sprite">Sprite</option>
+              <option value="monster">Monster</option>
+              <option value="red bull">Red Bull</option>
+            </select>
+          <label>Daily Drinks</label>
+        </div>
+
+
+
+      </div>
+      <div class="row">
+        <div class="input-field col s3">
+
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+  </div>
+  </div>
+  </form>
+  </div>
+  <div>
+    <!-- Dropdown Trigger -->
+
+    <!-- Dropdown Structure -->
+    <div class="container text-center">
+      <div class="">
+
+  <form action="#" id="beverage_menu">
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Coke" checked />
+        <span>Coke</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Mountain Dew" checked />
+        <span>Mountain Dew</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Red-Bull" checked />
+        <span>Red-Bull</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" type="radio" value="Monster" checked />
+        <span>Monster</span>
+      </label>
+    </p>
+  </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div>
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn blue' href='#' data-activates='dropdown2'>Consumed</a>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown2' class='dropdown-content'>
+      <li class="one" value="one"><a href="#!" id="uno">One</a></li>
+      <li class="two" value="two"><a href="#!" id="dos">Two</a></li>
+      <li class="three" value="three"><a href="#!" id="tres">Three</a></li>
+      <li class="four" value="four"><a href="#!" id="quatro">Four</a></li>
+    </ul>
+
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <br>
+  <div>
+    <a id="go" class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">GO!</i></a>
+  </div>
+  <br>
+  <div id="resultsHere">
+
+  </div>
+  <canvas id="myChart" width="1500" height="400"></canvas>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart to create
+      type: 'bar',
+      // The data for our dataset
+      data: {
+        labels: ["Coke", "Red Bull", "Monster", "Mountain Dew","Daily Recomended"],
+        datasets: [{
+          label: "Quantity of Beverage Consumed",
+          backgroundColor: 'rgb(255, 99, 132',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [65, 49, 54, 77, 30]
+        }]
+      },
+      // Configuration options go here
+      options: {
+        responsive: true,
+        scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
+      }
+    });
+    $(document).ready(function () {
+         $('.slider').slider({indicators:false});
+     });
+  </script>
+  <footer class="page-footer light-blue darken-1">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 ">
+          <h5 class="white-text">Group 6 Project 1:</h5>
+          <p class="grey-text text-lighten-4">John Mappin | Luke Fuller | Stuart Miller | Pranay Prathipati</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2019 Copyright
+        <a class="grey-text text-lighten-4 right" href="#!">Insert Github Link</a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/run.js"></script>
+
+
+</body>
+
+</html>
